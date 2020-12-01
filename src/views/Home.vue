@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <div class="card mt-5">
+      <div class="card-header text-center">Formulario</div>
+      <div class="card-body">
+        <form @submit.prevent="procesarFormulario">
+          <Formulario :contacto="contacto" />
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import Formulario from '../components/Formulario'
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    Formulario
+  },
+  data(){
+    return{
+      contacto:{
+        nombre:'',
+        empresa:'',
+        email:'',
+        telefono:'',
+        mensaje:''
+      }
+    }
+  },
+  methods:{
+    procesarFormulario(){
+      console.log(this.contacto)
+    }
   }
 }
 </script>
